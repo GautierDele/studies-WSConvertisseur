@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WSConvertisseur</name>
+    </assembly>
+    <members>
+        <member name="T:WSConvertisseur.Controllers.MottoController">
+            <summary>
+            TODO
+            </summary>
+        </member>
+        <member name="M:WSConvertisseur.Controllers.MottoController.GetAll">
+            <summary>
+            Get a all mottos.
+            </summary>
+            <returns>Http response</returns>
+            <response code="200"></response>
+        </member>
+        <member name="M:WSConvertisseur.Controllers.MottoController.GetById(System.Int32)">
+            <summary>
+            Get a single motto.
+            </summary>
+            <returns>Http response</returns>
+            <param name="id">The id of the motto</param>
+            <response code="200">When the motto id is found</response>
+            <response code="404">When the motto id is not found</response>
+        </member>
+        <member name="M:WSConvertisseur.Controllers.MottoController.Post(WSConvertisseur.Models.Motto)">
+            <summary>
+            Create a motto.
+            </summary>
+            <returns>Http response</returns>
+            <param name="motto">The motto</param>
+            <response code="200">When the motto is created</response>
+            <response code="400">When the motto isn't validated</response>
+        </member>
+        <member name="M:WSConvertisseur.Controllers.MottoController.Put(System.Int32,WSConvertisseur.Models.Motto)">
+            <summary>
+              TODO
+            </summary>
+        </member>
+        <member name="M:WSConvertisseur.Controllers.MottoController.Delete(System.Int32)">
+            <summary>
+            TODO
+            </summary>
+        </member>
+        <member name="M:WSConvertisseur.Controllers.MottoController.#ctor">
+            <summary>
+            TODO
+            </summary>
+        </member>
+    </members>
+</doc>
