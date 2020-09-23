@@ -44,5 +44,13 @@ namespace WSConvertisseur.Models
             this.Name = Name;
             this.Rate = Rate;
         }
+
+        public override bool Equals(object obj)
+        {
+            return obj is Motto motto &&
+                   id == motto.id &&
+                   name == motto.name &&
+                   rate == motto.rate;
+        }
     }
 }
