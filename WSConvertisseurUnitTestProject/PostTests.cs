@@ -6,40 +6,40 @@ using WSConvertisseur.Models;
 namespace WSConvertisseurUnitTestProject
 {
     [TestClass]
-    public class Put
+    public class PostTest
     {
         [TestMethod]
-        public void Put_ExistingIdPassed_ReturnsOkObjectResult()
+        public void Post_ExistingIdPassed_ReturnsOkObjectResult()
         {
             // Arrange
             var _controller = new MottoController();
             // Act
-            var result = _controller.Put(1, new Motto(1, "Test", 1.03)) as OkObjectResult;
+            var result = _controller.Post(new Motto(4, "test", 1.93)) as OkObjectResult;
             // Assert
             Assert.IsInstanceOfType(result, typeof(OkObjectResult), "Pas un OkObjectResult");
         }
 
         [TestMethod]
-        public void Put_UnknownGuidPassed_ReturnsNotFoundResult()
+        public void Post_UnknownGuidPassed_ReturnsNotFoundResult()
         {
             // Arrange
             var _controller = new MottoController();
             // Act
-            var result = _controller.Put(4, new Motto(1, "Test", 1.03));
+            var result = _controller.Post(new Motto(1, "test", 1.93));
             // Assert
-            Assert.IsInstanceOfType(result, typeof(BadRequestResult), "Pas un BadRequestResult");
+            Assert.IsInstanceOfType(result, typeof(BadRequestResult), "Pas un NotFoundResult");
         }
 
         [TestMethod]
-        public void Put_ExistingPassed_ReturnsRightItem()
+        public void Post_ExistingPassed_ReturnsRightItem()
         {
             // Arrange
             var _controller = new MottoController();
             // Act
-            var result = _controller.Put(1, new Motto(1, "Test", 1.03)) as OkObjectResult;
+            var result = _controller.Post(new Motto(4, "test", 1.93)) as OkObjectResult;
             // Assert
             Assert.IsInstanceOfType(result.Value, typeof(Motto), "Pas une Devise");
-            Assert.AreEqual(new Motto(1, "Test", 1.03), (Motto)result.Value, "Devises pas identiques");
+            Assert.AreEqual(new Motto(4, "test", 1.93), (Motto)result.Value, "Devises pas identiques");
         }
     }
 }
