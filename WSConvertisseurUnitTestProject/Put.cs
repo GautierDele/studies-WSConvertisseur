@@ -6,40 +6,40 @@ using WSConvertisseur.Models;
 namespace WSConvertisseurUnitTestProject
 {
     [TestClass]
-    public class UnitTest1
+    public class Put
     {
         [TestMethod]
-        public void GetById_ExistingIdPassed_ReturnsOkObjectResult()
+        public void Put_ExistingIdPassed_ReturnsOkObjectResult()
         {
             // Arrange
             var _controller = new MottoController();
             // Act
-            var result = _controller.GetById(1) as OkObjectResult;
+            var result = _controller.Put(1, new Motto(1, "Test", 1.03)) as OkObjectResult;
             // Assert
             Assert.IsInstanceOfType(result, typeof(OkObjectResult), "Pas un OkObjectResult");
         }
 
         [TestMethod]
-        public void GetById_UnknownGuidPassed_ReturnsNotFoundResult()
+        public void Put_UnknownGuidPassed_ReturnsNotFoundResult()
         {
             // Arrange
             var _controller = new MottoController();
             // Act
-            var result = _controller.GetById(20);
+            var result = _controller.Put(4, new Motto(1, "Test", 1.03));
             // Assert
-            Assert.IsInstanceOfType(result, typeof(NotFoundResult), "Pas un NotFoundResult");
+            Assert.IsInstanceOfType(result, typeof(BadRequestResult), "Pas un BadRequestResult");
         }
 
         [TestMethod]
-        public void GetById_ExistingPassed_ReturnsRightItem()
+        public void Put_ExistingPassed_ReturnsRightItem()
         {
             // Arrange
             var _controller = new MottoController();
             // Act
-            var result = _controller.GetById(1) as OkObjectResult;
+            var result = _controller.Put(1, new Motto(1, "Test", 1.03)) as OkObjectResult;
             // Assert
             Assert.IsInstanceOfType(result.Value, typeof(Motto), "Pas une Devise");
-            Assert.AreEqual(new Motto(1, "Dollar", 1.08), (Motto)result.Value, "Devises pas identiques");
+            Assert.AreEqual(new Motto(1, "Test", 1.03), (Motto)result.Value, "Devises pas identiques");
         }
     }
 }
